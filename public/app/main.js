@@ -17,7 +17,7 @@ angular.module('invoicing', [])
     name: 'Lotus Handicraft',
     web_link: 'http://buddhistmala.com.np/',
     address1: 'Boudha-6(inside), Kathmandu, Nepal',
-    postal: 'PAN No: 0013345898'
+    postal: 'PAN No: 301551298'
   },
   items:[
     { qty: 10, description: 'Gadget', cost: 9.95, weight: 0 }
