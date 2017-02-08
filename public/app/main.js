@@ -11,7 +11,11 @@ angular.module('invoicing', [])
     name: 'Mr. John Doe',
     web_link: 'Dharma Shop',
     address1: 'ABC, Hungary',
-    postal: '90210'
+    postal: 'Postal ',
+    city: "City Name",
+    state: "State Name",
+    zip_code: "Zip Code",
+    phone_no: "Phone No."
   },
   company_info: {
     name: 'Lotus Handicraft',
