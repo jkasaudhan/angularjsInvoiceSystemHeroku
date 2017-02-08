@@ -5,12 +5,17 @@
   <meta charset='utf-8'>
   <meta name="description" content="AngularJS app for creating and managing invoices">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">  
+  <link href = "css/datepicker.css" rel = "stylesheet">
+ 
+  <script src = "js/jquery.min.js"></script>
+  <script src = "js/bootstrap.min.js"></script>
+  <script src = "js/datepicker.js"></script>
   <script type="text/javascript" src="js/angular_1_4_4.min.js"></script>
   <script type="text/javascript" src="app/main.js"></script>
 </head>
 <body ng-app="invoicing" ng-controller="InvoiceCtrl" >
-  <div class="container" width="1000px" id="invoice" >
+  <div class="container" id="invoice" >
     <div class="row">
       <div class="col-xs-12 heading">
         Lotus Handicraft
@@ -20,8 +25,16 @@
     <div class="row branding">
       <div class="col-xs-6">
         <div class="invoice-number-container">
-          <label for="invoice-number">Invoice No #</label><input type="text" id="invoice-number" ng-model="invoice.invoice_number" />
+          <label for="invoice-number">Invoice No: </label><input type="text" id="invoice-number" ng-model="invoice.invoice_number" />
         </div>
+         <div class="docs-datepicker invoice-number-container">
+          <div class="input-group">
+            <label for="invoice-number">Date:&nbsp;&nbsp; </label>
+            <input type="text" class="docs-date" name="date" ng-model="invoice.date" placeholder="">
+          </div>
+          <div class="docs-datepicker-container"></div>
+        </div>
+          
       </div>
       <div class="col-xs-6 logo-container">
         <input type="file" id="imgInp" />
@@ -55,10 +68,11 @@
       <div class="row header">
         <div class="col-xs-1">&nbsp;</div>
         <div class="col-xs-1">SN</div>
+        <div class="col-xs-1">ID</div>
         <div class="col-xs-3">Description</div>
-        <div class="col-xs-2">Weight</div>
+        <div class="col-xs-1">Weight</div>
         <div class="col-xs-1">Quantity</div>
-        <div class="col-xs-2">Cost {{currencySymbol}}</div>
+        <div class="col-xs-2">Rate {{currencySymbol}}</div>
         <div class="col-xs-2 text-right">Total</div>
       </div>
       <div class="row invoice-item" ng-repeat="item in invoice.items track by $index" ng-animate="'slide-down'">
@@ -67,10 +81,13 @@
         </div>
         <div class="col-xs-1 input-container">{{$index+1}}
         </div>
-        <div class="col-xs-3 input-container">
-          <input ng-model="item.description"  placeholder="Description" />
+        <div class="col-xs-1 input-container">
+          <input ng-model="item.prodID" size="9" placeholder="Product ID" />
         </div>
-        <div class="col-xs-2 input-container">
+        <div class="col-xs-3 input-container">
+          <input ng-model="item.description" size="32" placeholder="Description" />
+        </div>
+        <div class="col-xs-1 input-container">
           <input ng-model="item.weight"  size="6" placeholder="Weight" />
         </div>
         <div class="col-xs-1 input-container">
