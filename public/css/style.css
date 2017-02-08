@@ -142,3 +142,7 @@ div.container{
   position: relative;
   color: #ce0c15;
 }
+
+input.img-upload {
+    width: 100px;
+}

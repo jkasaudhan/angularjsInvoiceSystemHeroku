@@ -235,8 +235,37 @@ angular.module('invoicing', [])
       readUrl(this);
     };
   });
-
-      var $date = $('.docs-date');
+      
+ //Image upload feature
+ //We are using delegate method so that we can add event listener to the future element created      
+ jQuery("#form").delegate("input[type=file]", "change", function(evt){
+      if ( this.files && this.files[0] ) {
+        var FR= new FileReader();
+        FR.onload = function(e) {
+             var imgSrc = jQuery('#prodImgSrc_'+evt.target.id);     
+             imgSrc[0].src = e.target.result;
+        };       
+        FR.readAsDataURL( this.files[0] );
+    }
+ });
+ 
+// var prodImgElem = document.getElementById('prodImage');
+// angular.element('#prodImage').addEventListener('change', function(e) {
+//     console.log("changing image", e.target);
+//     if ( this.files && this.files[0] ) {
+//        var FR= new FileReader();
+//        FR.onload = function(e) {
+//            
+//             angular.element('#prodImgSrc')[0].src = e.target.result;
+//            
+//            console.log(angular.element('#prodImgSrc'),e.target.result); 
+//        };       
+//        FR.readAsDataURL( this.files[0] );
+//    }
+// },false);
+      
+  //Datepicker code      
+  var $date = $('.docs-date');
   var $container = $('.docs-datepicker-container');
   var $trigger = $('.docs-datepicker-trigger');
   var options = {
