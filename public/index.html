@@ -17,23 +17,27 @@
 <body ng-app="invoicing" ng-controller="InvoiceCtrl" >
   <div id="form" name="form"  class="container" id="invoice" >
     <div class="row">
-      <div class="col-xs-12 heading">
+      <div class="col-xs-12 left header ">
         Lotus Handicraft
       </div>
   
     </div>
     <div class="row branding">
       <div class="col-xs-6">
-        <div class="invoice-number-container">
-          <label for="invoice-number">Invoice No: </label><input type="text" id="invoice-number" ng-model="invoice.invoice_number" />
-        </div>
-         <div class="docs-datepicker invoice-number-container">
-          <div class="input-group">
-            <label for="invoice-number">Date:&nbsp;&nbsp; </label>
-            <input type="text" class="docs-date" name="date" ng-model="invoice.date" placeholder="">
-          </div>
-          <div class="docs-datepicker-container"></div>
-        </div>
+
+       <div class="input-container">
+           <input type="text" ng-model="invoice.company_info.address1" size="50" placeholder="Your Company Address"/>
+       </div>          
+        <div class="input-container">
+            <input type="text" ng-model="invoice.company_info.phone_no" size="50" placeholder="Your Phone No."/>
+        </div>  
+        <div class="input-container">
+            <input type="text" ng-model="invoice.company_info.website" size="50" placeholder="Your Website"/>
+        </div>       
+         <div class="input-container">
+            <input type="text" ng-model="invoice.company_info.pan_no" size="50" placeholder="Your PAN No"/>
+        </div>          
+
           
       </div>
       <div class="col-xs-6 logo-container">
@@ -51,6 +55,17 @@
     </div>
     <div class="row infos">
       <div class="col-xs-6">
+         <div class="invoice-number-container">
+             <label for="invoice-num">Invoice No: </label>
+             <input type="text" id="invoice-number" ng-model="invoice.invoice_number" />
+        </div>         
+         <div class="docs-datepicker invoice-number-container">
+          <div class="input-group">
+            <label for="invoice-date">Date:&nbsp;&nbsp; </label>
+            <input type="text" class="docs-date" name="date" ng-model="invoice.date" placeholder="Date">
+          </div>
+          <div class="docs-datepicker-container"></div>
+        </div>          
         <div class="input-container">
             <label for="customer-name">Name:&nbsp;&nbsp; </label>
             <input type="text" ng-model="invoice.customer_info.name" placeholder="Customer Name"/></div>
@@ -59,7 +74,12 @@
             <label for="customer-address">Address:&nbsp;&nbsp; </label>
             <input type="text" ng-model="invoice.customer_info.address1" placeholder="Customer Address"/>
         </div>
-        <div class="input-container">
+       <div class="input-container" data-ng-hide='printMode'>
+          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
+        </div>         
+      </div>
+      <div class="col-xs-6">
+       <div class="input-container">
             <label for="customer-city">City:&nbsp;&nbsp; </label>
             <input type="text" ng-model="invoice.customer_info.city" placeholder="City"/>
         </div>
@@ -75,15 +95,7 @@
             <label for="customer-phoneno">Phone No:&nbsp;&nbsp; </label>
             <input type="text" ng-model="invoice.customer_info.phone_no" placeholder="Customer Phone No."/>
         </div>             
-        <div class="input-container" data-ng-hide='printMode'>
-          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
-        </div>
-      </div>
-      <div class="col-xs-6 right">
-        <div class="input-container"><input type="text" ng-model="invoice.company_info.name"  placeholder="Your Company Name" /></div>
-        <div class="input-container"><input type="text" ng-model="invoice.company_info.web_link"  placeholder="Your Company Website"/></div>
-        <div class="input-container"><input type="text" ng-model="invoice.company_info.address1"  placeholder="Your Company Address"/></div>
-        <div class="input-container"><input type="text" ng-model="invoice.company_info.postal"  placeholder="Your Company Pan No."/></div>
+ 
       </div>
     </div>
     <div class="items-table">
@@ -94,8 +106,8 @@
         <div class="col-xs-1">ID</div>
         <div class="col-xs-3">Description</div>
         <div class="col-xs-1">Weight</div>
-        <div class="col-xs-1">Quantity</div>
-        <div class="col-xs-1">Rate {{currencySymbol}}</div>
+        <div class="col-xs-1">Quantity </div>
+        <div class="col-xs-1">Rate</div>
         <div class="col-xs-1 text-right">Total</div>
       </div>
       <div class="row invoice-item" ng-repeat="item in invoice.items track by $index" ng-animate="'slide-down'">
