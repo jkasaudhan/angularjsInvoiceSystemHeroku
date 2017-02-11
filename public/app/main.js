@@ -26,7 +26,17 @@ angular.module('invoicing', [])
   },
   items:[
     { qty: 10, description: 'Gadget', cost: 9.95, weight: 0 }
-  ]
+  ],
+  invoice_headings: {
+    image: "Image",
+    sn: "SN",
+    prodID: "ID",
+    description: "Description",
+    weight: "Wgt",
+    quantity: "Qty",
+    rate: "Rate",
+    total: "Total"
+  }
 })
 
 // Service for accessing local storage

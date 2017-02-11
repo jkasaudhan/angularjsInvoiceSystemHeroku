@@ -101,14 +101,14 @@
     <div class="items-table">
       <div class="row header">
         <div class="col-xs-1">&nbsp;</div>
-        <div class="col-xs-2">Image</div>
-        <div class="col-xs-1">SN</div>
-        <div class="col-xs-1">ID</div>
-        <div class="col-xs-3">Description</div>
-        <div class="col-xs-1">Wgt</div>
-        <div class="col-xs-1">Qty </div>
-        <div class="col-xs-1">Rate</div>
-        <div class="col-xs-1 text-right">Total</div>
+        <div class="col-xs-2"><input ng-model="invoice.invoice_headings.image" size="10" placeholder="Image" /></div>
+        <div class="col-xs-1"><input ng-model="invoice.invoice_headings.sn" size="5" placeholder="SN" /></div>
+        <div class="col-xs-1"><input ng-model="invoice.invoice_headings.prodID" size="5" placeholder="ID" /></div>
+        <div class="col-xs-3"><input ng-model="invoice.invoice_headings.description" size="15" placeholder="Description" /></div>
+        <div class="col-xs-1"><input ng-model="invoice.invoice_headings.weight" size="6" placeholder="Weight" /></div>
+        <div class="col-xs-1"><input ng-model="invoice.invoice_headings.quantity" size="10" placeholder="Quantity" /> </div>
+        <div class="col-xs-1"><input ng-model="invoice.invoice_headings.rate" size="6" placeholder="Rate" /></div>
+        <div class="col-xs-1 text-right"><input ng-model="invoice.invoice_headings.total" size="10" placeholder="Total" /></div>
       </div>
       <div class="row invoice-item" ng-repeat="item in invoice.items track by $index" ng-animate="'slide-down'">
         <div class="col-xs-1 remove-item-container">
