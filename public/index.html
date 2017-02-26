@@ -12,10 +12,12 @@
   <script src = "js/bootstrap.min.js"></script>
   <script src = "js/datepicker.js"></script>
   <script type="text/javascript" src="js/angular_1_4_4.min.js"></script>
+  <script type="text/javascript" src="js/html2canvas.js"></script>
   <script type="text/javascript" src="app/main.js"></script>
 </head>
 <body ng-app="invoicing" ng-controller="InvoiceCtrl" >
   <div id="form" name="form"  class="container" id="invoice" >
+    <div id="mainInvoceContent" style="padding: 20px;">
     <div class="row">
       <div class="col-xs-12 left header ">
         <input type="text" ng-model="invoice.company_info.name"  placeholder="Your Company Name"/>
@@ -42,7 +44,7 @@
       </div>
       <div class="col-xs-6 logo-container">
         <input type="file" id="imgInp" />
-        <img ng-hide="logoRemoved" id="company_logo" ng-src="{{ logo }}" alt="your image" width="300" />
+        <img ng-hide="logoRemoved" id="company_logo" ng-src="{{ logo }}" src="{{companyLogoData}}" alt="your image" width="300" />
         <div>
           <div class="noPrint" ng-hide="printMode">
             <a ng-click="editLogo()" href >Edit Logo</a>
@@ -157,14 +159,17 @@
         <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
       </div>
     </div>
+    </div>  
     <div class="row noPrint actions">
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
       <a href="#" class="btn btn-primary" ng-click="clearLocalStorage()">Reset</a>
       <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</a>
+      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="saveInvoice()">Save Invoice</a>
+       
     </div>
   </div>
-
+  <div id="previewSnapshot"></div>
   <div ng-hide="printMode" class="copy noPrint">
     <a href="http://buddhistmala.com.np/">Lotus Handicraft</a>
   </div>
