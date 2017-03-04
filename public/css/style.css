@@ -154,3 +154,12 @@ input.img-upload {
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
 }
+
+.img-container {
+    padding: 5px;   
+    display: block;
+}
+
+.input-container {
+ margin-left: 0px;   
+}
