@@ -36,7 +36,8 @@ angular.module('invoicing', [])
     weight: "Wgt",
     quantity: "Qty",
     rate: "Rate",
-    total: "Total"
+    total: "Total",
+    dueText: "Due Amount"
   }
 })
 
