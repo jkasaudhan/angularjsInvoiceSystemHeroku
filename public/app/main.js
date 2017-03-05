@@ -7,6 +7,7 @@ angular.module('invoicing', [])
 .constant('DEFAULT_INVOICE', {
   tax: 0.00,
   due: 0.00,
+  shipping_charge: 0.00,  
   invoice_number: 10,
   customer_info: {
     name: 'Mr. John Doe',
@@ -16,7 +17,9 @@ angular.module('invoicing', [])
     city: "City Name",
     state: "State Name",
     zip_code: "Zip Code",
-    phone_no: "Phone No."
+    phone_no: "Phone No.",
+    email: "Email",
+    website: "Website"  
   },
   company_info: {
     name: 'Lotus Handicraft',
@@ -37,7 +40,9 @@ angular.module('invoicing', [])
     quantity: "Qty",
     rate: "Rate",
     total: "Total",
-    dueText: "Due Amount"
+    dueText: "Due Amount: ",
+    tax: "Tax(%): " ,
+    shipping_charge: "Shipping Charge: (0kg)"
   }
 })
 
@@ -201,7 +206,7 @@ angular.module('invoicing', [])
 
   // Calculates the tax of the invoice
   $scope.calculateTax = function() {
-    return (($scope.invoice.tax * $scope.invoiceSubTotal())/100);
+    return ((parseFloat($scope.invoice.tax) * $scope.invoiceSubTotal())/100);
   };
 
   // Calculates the amout with due of the invoice
@@ -209,10 +214,15 @@ angular.module('invoicing', [])
     return $scope.invoice.due ;
   };
       
+  //calculate shipping charge
+  $scope.getShippingCharge = function() {
+       return parseFloat($scope.invoice.shipping_charge);
+  }
+  
   // Calculates the grand total of the invoice
   $scope.calculateGrandTotal = function() {
     saveInvoice(); 
-    return parseFloat($scope.invoice.due) + $scope.invoiceSubTotal();
+    return parseFloat($scope.invoice.due) + $scope.calculateTax() + $scope.invoiceSubTotal() + $scope.getShippingCharge();
   };
 
   // Clears the local storage
