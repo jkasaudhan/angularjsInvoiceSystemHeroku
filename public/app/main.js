@@ -26,7 +26,8 @@ angular.module('invoicing', [])
     website: 'http://buddhistmala.com.np/',
     address1: 'Boudha-6(inside), Kathmandu, Nepal',
     pan_no: 'PAN No: 301551298',
-    phone_no: '+9779841277515'  
+    phone_no: '+9779841277515' ,
+    email: "lotushc@gmail.com"
   },
   items:[
     { qty: 10, description: 'Gadget', cost: 10, weight: 0 }
