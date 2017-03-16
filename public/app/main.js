@@ -7,6 +7,7 @@ angular.module('invoicing', [])
 .constant('DEFAULT_INVOICE', {
   tax: 0.00,
   due: 0.00,
+  advance: 0.00,
   shipping_charge: 0.00,  
   invoice_number: 10,
   customer_info: {
@@ -43,7 +44,8 @@ angular.module('invoicing', [])
     total: "Total",
     dueText: "Due Amount: ",
     tax: "Tax(%): " ,
-    shipping_charge: "Shipping Charge: (0kg)"
+    shipping_charge: "Shipping Charge: (0kg)",
+    advancePaymentText: "Advance Payment"  
   }
 })
 
@@ -137,6 +139,10 @@ angular.module('invoicing', [])
       {
         name: 'US Dollar ($)',
         symbol: '$'
+      },
+      {
+        name: 'Nepali Rupee (NPR)',
+        symbol: 'NPR '
       }
     ]
   }
@@ -214,6 +220,11 @@ angular.module('invoicing', [])
   $scope.calculateTotalWithDue = function() {
     return $scope.invoice.due ;
   };
+
+ // Reduce advance payment amount from total
+  $scope.getAdvancePaymentAmt = function() {
+    return (- $scope.invoice.advance) ;
+  };
       
   //calculate shipping charge
   $scope.getShippingCharge = function() {
@@ -223,7 +234,7 @@ angular.module('invoicing', [])
   // Calculates the grand total of the invoice
   $scope.calculateGrandTotal = function() {
     saveInvoice(); 
-    return parseFloat($scope.invoice.due) + $scope.calculateTax() + $scope.invoiceSubTotal() + $scope.getShippingCharge();
+    return parseFloat($scope.invoice.due) + $scope.calculateTax() + $scope.invoiceSubTotal() + $scope.getShippingCharge()  -parseFloat($scope.invoice.advance);
   };
 
   // Clears the local storage

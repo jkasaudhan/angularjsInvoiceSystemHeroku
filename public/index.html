@@ -179,6 +179,14 @@
             <input ng-model="invoice.due" ng-validate="number" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{calculateTotalWithDue() | currency: currencySymbol}}</div>
       </div>
+        
+      <div class="row">
+        <div class="col-xs-10 text-right">
+            <input class="text-right" ng-model="invoice.invoice_headings.advancePaymentText" size="25" placeholder="Advance Payment" />
+            <input ng-model="invoice.advance" ng-validate="number" style="width:55px"></div>
+        <div class="col-xs-2 text-right">{{getAdvancePaymentAmt() | currency: currencySymbol}}</div>
+      </div>        
+        
       <div class="row">
         <div class="col-xs-10 text-right">Grand Total:</div>
         <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
