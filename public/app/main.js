@@ -171,6 +171,7 @@ angular.module('invoicing', [])
     !function() {
       var logo = LocalStorage.getLogo();
       $scope.logo = logo ? logo : DEFAULT_LOGO;
+      $scope.logoSrc = DEFAULT_LOGO;
     }();
 
     $scope.availableCurrencies = Currency.all();
