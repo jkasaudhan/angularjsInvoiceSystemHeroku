@@ -60,7 +60,7 @@
     <div class="row infos">
       <div class="col-xs-6">
          <div class="invoice-number-container">
-             <label for="invoice-num">Invoice No: </label>
+             <label for="invoice-num" contenteditable="true">Invoice No: </label>
              <input type="text" id="invoice-number" ng-model="invoice.invoice_number" />
         </div>         
          <div class="docs-datepicker invoice-number-container">
@@ -168,7 +168,7 @@
         
       <div class="row">
         <div class="col-xs-10 text-right">
-            <input class="" ng-model="invoice.invoice_headings.shipping_charge" size="25" placeholder="Shipping Charge(0 kg)" />
+            <label class="" contenteditable="true">{{invoice.invoice_headings.shipping_charge}}</label>
             <input ng-model="invoice.shipping_charge" ng-validate="number" placeholder="0" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{getShippingCharge() | currency: currencySymbol}}</div>
       </div>        
@@ -182,7 +182,7 @@
         
       <div class="row">
         <div class="col-xs-10 text-right">
-            <input class="text-right" ng-model="invoice.invoice_headings.advancePaymentText" size="25" placeholder="Advance Payment" />
+            <label contenteditable="true">{{invoice.invoice_headings.advancePaymentText}}</label>
             <input ng-model="invoice.advance" ng-validate="number" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{getAdvancePaymentAmt() | currency: currencySymbol}}</div>
       </div>        
