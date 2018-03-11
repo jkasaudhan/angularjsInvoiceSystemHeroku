@@ -161,7 +161,7 @@
       </div>
        <div class="row">
         <div class="col-xs-10 text-right">
-            <input class="text-right" ng-model="invoice.invoice_headings.tax" size="25" placeholder="Tax(0%)" />
+            <label class="" contenteditable="true">{{invoice.invoice_headings.tax}}</label>
             <input ng-model="invoice.tax" ng-validate="number" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
       </div>       
