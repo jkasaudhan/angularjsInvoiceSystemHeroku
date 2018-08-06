@@ -165,14 +165,7 @@
             <input ng-model="invoice.tax" ng-validate="number" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
       </div>       
-        
-      <div class="row">
-        <div class="col-xs-10 text-right">
-            <label class="" contenteditable="true">{{invoice.invoice_headings.shipping_charge}}</label>
-            <input ng-model="invoice.shipping_charge" ng-validate="number" placeholder="0" style="width:55px"></div>
-        <div class="col-xs-2 text-right">{{getShippingCharge() | currency: currencySymbol}}</div>
-      </div>        
-        
+          
       <div class="row">
         <div class="col-xs-10 text-right">
             <input class="text-right" ng-model="invoice.invoice_headings.dueText" size="25" placeholder="Due Amount" />
@@ -186,11 +179,19 @@
             <input ng-model="invoice.advance" ng-validate="number" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{getAdvancePaymentAmt() | currency: currencySymbol}}</div>
       </div>        
-        
+      
+      <div class="row">
+        <div class="col-xs-10 text-right">
+            <label class="" contenteditable="true">{{invoice.invoice_headings.shipping_charge}}</label>
+            <input ng-model="invoice.shipping_charge" ng-validate="number" placeholder="0" style="width:55px"></div>
+        <div class="col-xs-2 text-right">{{getShippingCharge() | currency: currencySymbol}}</div>
+      </div>     
+
       <div class="row">
         <div class="col-xs-10 text-right">Grand Total:</div>
         <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
       </div>
+      
     </div>
     </div>  
     <div class="row noPrint actions">
