@@ -256,6 +256,14 @@ angular.module('invoicing', [])
   return totalWeight;
 };
 
+ // show total weight
+ $scope.setRandomInvoiceNo = function() {
+   var invoiceNo = Math.floor(100000 + Math.random() * 900000);
+   $scope.invoice.invoice_number = invoiceNo;
+  };
+
+  $scope.setRandomInvoiceNo();
+
   // Clears the local storage
   $scope.clearLocalStorage = function() {
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
