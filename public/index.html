@@ -186,7 +186,21 @@
             <input ng-model="invoice.advance" ng-validate="number" style="width:55px"></div>
         <div class="col-xs-2 text-right">{{getAdvancePaymentAmt() | currency: currencySymbol}}</div>
       </div>        
-        
+      
+      <div class="row">
+        <div class="col-xs-10 text-right">
+           <label contenteditable="true">Total Quantity: </label>
+         </div>
+           <div class="col-xs-2 text-right">{{getTotalQuantity()}}</div>
+     </div>   
+      <div class="row">
+         <div class="col-xs-10 text-right">
+            <label contenteditable="true">Total Weight: </label>
+          </div>
+            <div class="col-xs-2 text-right">{{getTotalWeight()}}</div>
+      </div>      
+
+
       <div class="row">
         <div class="col-xs-10 text-right">Grand Total:</div>
         <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>

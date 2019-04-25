@@ -238,6 +238,24 @@ angular.module('invoicing', [])
     return parseFloat($scope.invoice.due) + $scope.calculateTax() + $scope.invoiceSubTotal() + $scope.getShippingCharge()  -parseFloat($scope.invoice.advance);
   };
 
+  // show total quantity
+  $scope.getTotalQuantity = function() {
+    var totalQuantity = 0;
+    for (var i = 0; i < $scope.invoice.items.length; i++) {
+      totalQuantity += parseFloat($scope.invoice.items[i].qty) ;
+    }
+    return totalQuantity;
+  };
+
+ // show total weight
+ $scope.getTotalWeight = function() {
+  var totalWeight = 0;
+  for (var i = 0; i < $scope.invoice.items.length; i++) {
+    totalWeight += parseFloat($scope.invoice.items[i].weight) ;
+  }
+  return totalWeight;
+};
+
   // Clears the local storage
   $scope.clearLocalStorage = function() {
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
